@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif; /* Police de caractère */
+    background-color: #f0f0f0; /* Couleur de fond de secours */
+    color: #333; /* Couleur du texte */
+    margin: 0; /* Supprimer les marges par défaut */
+    padding: 0; /* Supprimer le rembourrage par défaut */
+    
+    /* Propriétés d'image de fond */
+    
+    background-size: cover; /* Couvrir tout l'écran */
+    background-repeat: no-repeat; /* Ne pas répéter l'image */
+    background-position: center; /* Centrer l'image */
+    background-attachment: fixed; /* Fixer l'image lors du défilement */
+}
+
+
+header {
+    background-color: rgba(177, 191, 178, 0.8); /* Couleur de fond avec transparence */
+    color: white; /* Couleur du texte de l'en-tête */
+    padding: 15px; /* Rembourrage de l'en-tête */
+    text-align: center; /* Centre le texte de l'en-tête */
+}
+
+.menu .welcome {
+    margin: 10px 0; /* Marges autour du texte de bienvenue */
+}
+
+.container {
+    max-width: 600px; /* Largeur maximale du conteneur */
+    margin: 20px auto; /* Centre le conteneur */
+    padding: 20px; /* Rembourrage interne */
+    background-color: white; /* Couleur de fond du conteneur */
+    border-radius: 5px; /* Coins arrondis */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+h1 {
+    text-align: center; /* Centre le titre */
+}
+
+form {
+    display: flex; /* Utilise flexbox pour aligner les éléments */
+    flex-direction: column; /* Aligne les éléments en colonne */
+    margin-bottom: 20px; /* Marges en bas du formulaire */
+}
+
+input[type="text"],
+input[type="date"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input[type="date"]::placeholder {
+    color: #999;
+}
+
+
+button {
+    background-color: #4CAF50; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte */
+    padding: 10px; /* Rembourrage interne */
+    border: none; /* Supprime la bordure */
+    border-radius: 4px; /* Coins arrondis */
+    cursor: pointer; /* Curseur main */
+    font-size: 16px; /* Taille de police */
+}
+
+button:hover {
+    background-color: #45a049; /* Couleur de fond au survol */
+}
+
+.filter {
+    text-align: center; /* Centre les boutons de filtre */
+    margin-bottom: 20px; /* Marges en bas des boutons de filtre */
+}
+
+#taskList {
+    list-style-type: none; /* Supprime les puces de la liste */
+    padding: 0; /* Supprime le rembourrage par défaut */
+}
+
+#taskList li {
+    padding: 10px; /* Rembourrage interne de chaque élément de la liste */
+    border-bottom: 1px solid #ddd; /* Ligne de séparation entre les éléments */
+}
+
+input[type="checkbox"] {
+    margin-right: 10px; /* Espace entre la case à cocher et le texte */
+}

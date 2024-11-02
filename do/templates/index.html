@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Liste de Tâches</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>body {background-image: url("{% static 'img/oo.jpg' %}");} </style>
+</head>
+<body>
+    <header>
+        <nav class="menu">
+            <div class="welcome">
+                {% if user.is_authenticated %}
+                    <p>Bienvenue, {{ user.username }} 
+                    <a href="{% url 'logout' %}">Déconnexion</a> <i class="fas fa-user"></i>
+                {% else %}
+                    <a href="{% url 'login' %}">Connexion <i class="fas fa-sign-in-alt"></i></a></br></br></br>
+                    <a href="{% url 'sign_up' %}">Inscription <i class="fas fa-user-plus"></i></a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <h1>Liste de Tâches</h1>
+        
+        <form id="taskForm" method="POST" action="{% url 'ajouter' %}">
+            {% csrf_token %}
+            <input type="text" name="taches" placeholder="Ajouter une nouvelle tâche..." required />
+        </br>
+            <input type="date" id="date-input" name="date" placeholder="Date: DD-MM-YYYY" pattern="\d{2}-\d{2}-\d{4}" title="Veuillez entrer la date au format DD-MM-YYYY" required />
+            </br>
+            <button type="submit">Ajouter Tâche</button>
+        </form>
+
+        <ul id="taskList">
+            {% for tache in taches %}
+                <li>
+                    <form method="POST" action="{% url 'toggle_task' tache.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="checkbox" id="task-{{ tache.id }}" name="completed" onchange="this.form.submit()" {% if tache.completed %} checked {% endif %}>
+                        <label for="task-{{ tache.id }}">
+                            {% if tache.completed %}
+                                <strike>{{ tache.name }}</strike>
+                            {% else %}
+                                <span style="margin-right: 300px;">{{ tache.name }}</span>{{ tache.date }}
+                            {% endif %}
+                        </label>
+                    </form>    
+                    {% if tache.date == today %}
+                    <p style="color: red; font-weight: bold;">⚠️ Cette tâche est prévue pour aujourd'hui !</p>
+                    {% endif %}
+                </li>
+            {% empty %}
+                <li>Aucune tâche pour le moment.</li>
+            {% endfor %}
+        </ul>     
+    </div>
+    
+</body>
+</html>
